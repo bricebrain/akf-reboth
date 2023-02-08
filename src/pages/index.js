@@ -1,5 +1,5 @@
-import * as React from "react";
-
+import { useEffect, useState } from "react";
+import Router, { useRouter } from "next/router";
 import { Box, Button, Drawer, Paper } from "@mui/material";
 import MultiActionAreaCard from "@/components/MultiActionAreaCard";
 import Carousel from "react-material-ui-carousel";
@@ -7,24 +7,30 @@ import BannerNew from "@/components/BannerNew";
 import AppBaro from "@/components/AppBaro";
 import SelectionCategories from "@/components/SelectionCategories";
 import Articles from "@/components/Articles";
-
-const style = {
-  width: "100%",
-  maxWidth: 360,
-  bgcolor: "background.paper",
-};
+import { db } from "../firebase-config";
+import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 
 function Item({ item }) {
   return <BannerNew item={item} />;
 }
 
-const articles = [
-  { id: 1, text: "rouge" },
-  { id: 2, text: "bleu" },
-  { id: 4, text: "bleu" },
-  { id: 3, text: "bleu" },
-];
 export default function Home() {
+  const router = useRouter();
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    loadData();
+    return () => {};
+  }, []);
+
+  const loadData = async () => {
+    const databaseProducts = collection(db, "mostPopular");
+    const data = await getDocs(databaseProducts);
+    const products = data.docs.map((doc) => doc.data());
+    console.log(products);
+    setArticles(products);
+  };
+
   let items = [
     {
       name: "Random Name #1",
@@ -46,17 +52,25 @@ export default function Home() {
   let catItems = [
     {
       title: "Maroquinerie",
-      url: "https://img.ltwebstatic.com/images3_pi/2022/03/22/1647943260c6f1685940f4225b994befbf3de1b1f2.webp",
+      url: "https://media.istockphoto.com/id/530528435/photo/shelves-with-handbags.jpg?s=612x612&w=0&k=20&c=-IL3WO7l8zqaAl20GyoIin3ggcDQOagDFEMCBf5D7Bg=",
+      path: "/maroquinerie",
     },
     {
-      title: "Prët à porter",
+      title: "Prêt à porter",
       url: "https://i0.wp.com/blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know.png?fit=2240%2C1260&ssl=1",
+      path: "/vetements",
     },
     {
       title: "Maquillage",
       url: "https://media.istockphoto.com/id/1221677097/fr/photo/maquillage-des-produits-cosm%C3%A9tiques-sur-fond-de-couleur-rose.jpg?s=612x612&w=0&k=20&c=9Ub2vBzlDu7cwxisVft5xLuV4aQclVYK00QXcKsOCeQ=",
+      path: "/maquillage",
     },
   ];
+
+  const transfertTo = (e, href) => {
+    e.preventDefault();
+    Router.push(href);
+  };
   return (
     <>
       <AppBaro />
@@ -102,7 +116,7 @@ export default function Home() {
       >
         {catItems.map((item) => (
           <Paper key={item.url} elevation={3}>
-            <SelectionCategories item={item} />
+            <SelectionCategories item={item} transfertTo={transfertTo} />
           </Paper>
         ))}
       </Box>
@@ -125,7 +139,7 @@ export default function Home() {
           flexWrap: "wrap",
           justifyContent: "space-evenly",
           "& > :not(style)": {
-            width: 300,
+            width: "90%",
           },
         }}
       >

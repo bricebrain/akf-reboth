@@ -1,5 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
+import Router, { useRouter } from "next/router";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -7,6 +8,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBag from "@mui/icons-material/ShoppingBag";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 import Image from "next/image";
 import profilePic from "../../public/logoMin.png";
 import { Badge } from "@mui/material";
@@ -22,8 +24,9 @@ export default function AppBaro() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => Router.back()}
           >
-            <MenuIcon />
+            <ArrowBack />
           </IconButton>
           <Image
             src={profilePic}
@@ -48,8 +51,6 @@ export default function AppBaro() {
               <ShoppingBag />
             </Badge>
           </IconButton>
-
-          {/* <Button color="inherit">LoginO</Button> */}
         </Toolbar>
       </AppBar>
     </Box>

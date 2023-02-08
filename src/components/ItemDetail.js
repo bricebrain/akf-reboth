@@ -11,27 +11,26 @@ import {
   Grow,
 } from "@mui/material";
 
-export default function MultiActionAreaCard({ item }) {
+export default function ItemDetail({ item }) {
   return (
     <Grow
-      key={item.id}
       in={true}
       style={{ transformOrigin: "0 0 0" }}
       {...(true ? { timeout: 1000 } : {})}
     >
       <Card
+        key={item.id}
         sx={{
-          width: "300",
-          height: 280,
+          width: 350,
 
-          marginBottom: 3,
+          marginBottom: 0,
         }}
       >
         <CardActionArea>
           <CardMedia
             component="img"
             height="180"
-            image={item.url}
+            image="https://img.ltwebstatic.com/images3_pi/2022/09/19/16635547874ab2a7c4b54d39b1279a64fbf7c93af9_thumbnail_900x.webp"
             alt="green iguana"
           />
           <CardContent>
@@ -46,13 +45,10 @@ export default function MultiActionAreaCard({ item }) {
               }}
             >
               <Typography variant="body3" color="text.secondary">
-                {item.name}
+                Lizards are a widespread group of squamate
               </Typography>
 
-              <span style={{ fontWeight: "bold", paddingTop: 4 }}>
-                {" "}
-                {item.price} FCFA
-              </span>
+              <span>33 000 FCFA</span>
               <div
                 style={{
                   display: "flex",
@@ -63,11 +59,42 @@ export default function MultiActionAreaCard({ item }) {
             </div>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
+        <CardActions
+          style={{
+            border: "1px solid red",
+            margin: 0,
+            fontSize: 8,
+            height: 30,
+            padding: 0,
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            size="small"
+            color="primary"
+            style={{
+              border: "1px solid red",
+              margin: 0,
+              fontSize: 8,
+              width: 30,
+              padding: 0,
+            }}
+          >
             Details
           </Button>
-          <Button size="small" color="primary">
+          <Button
+            size="small"
+            color="primary"
+            style={{
+              border: "1px solid red",
+              margin: 0,
+              fontSize: 8,
+              width: 30,
+              padding: 0,
+            }}
+          >
             Ajouter au panier
           </Button>
         </CardActions>

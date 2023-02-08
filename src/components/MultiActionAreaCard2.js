@@ -14,17 +14,16 @@ import {
 export default function MultiActionAreaCard({ item }) {
   return (
     <Grow
-      key={item.id}
       in={true}
       style={{ transformOrigin: "0 0 0" }}
       {...(true ? { timeout: 1000 } : {})}
     >
       <Card
+        key={item.id}
         sx={{
-          width: "300",
-          height: 280,
+          width: 350,
 
-          marginBottom: 3,
+          marginBottom: 0,
         }}
       >
         <CardActionArea>
@@ -50,7 +49,6 @@ export default function MultiActionAreaCard({ item }) {
               </Typography>
 
               <span style={{ fontWeight: "bold", paddingTop: 4 }}>
-                {" "}
                 {item.price} FCFA
               </span>
               <div
@@ -63,11 +61,39 @@ export default function MultiActionAreaCard({ item }) {
             </div>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
+        <CardActions
+          style={{
+            margin: 0,
+            fontSize: 8,
+            height: 30,
+            padding: 0,
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            size="small"
+            color="primary"
+            style={{
+              margin: 0,
+              fontSize: 8,
+              width: 30,
+              padding: 0,
+            }}
+          >
             Details
           </Button>
-          <Button size="small" color="primary">
+          <Button
+            size="small"
+            color="primary"
+            style={{
+              margin: 0,
+              fontSize: 8,
+              width: 30,
+              padding: 0,
+            }}
+          >
             Ajouter au panier
           </Button>
         </CardActions>

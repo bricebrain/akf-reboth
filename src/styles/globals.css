@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "OoohBaby";
+  src: url('fonts/OoohBaby-Regular.ttf');
+  src: url('fonts/OoohBaby-Regular.ttf') format('truetype')
+     
+       
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

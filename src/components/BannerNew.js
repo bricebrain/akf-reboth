@@ -19,11 +19,13 @@ export default function BannerNew({ item }) {
         <div
           style={{
             position: "absolute",
-            fontFamily: "Chalkduster",
+            fontFamily: "OoohBaby",
             width: "100%",
             textAlign: "center",
-            fontSize: 20,
+            fontSize: 40,
+            fontWeight: "bold",
             color: "white",
+
             top: "50%",
             left: "50%",
             transform: "translateX(-50%)",
@@ -33,30 +35,5 @@ export default function BannerNew({ item }) {
         </div>
       </div>
     </Card>
-    // <Card sx={{ maxWidth: "100%" }}>
-    //   <CardActionArea>
-    //     <CardMedia component="img" image={item.url} alt="green iguana" />
-    //     <CardContent>
-    //       <Typography variant="body2" color="text.secondary">
-    //         Lizards are a widespread group of squamate reptiles, with over 6,000
-    //         species, ranging across all continents except Antarctica
-    //       </Typography>
-    //     </CardContent>
-    //   </CardActionArea>
-    // </Card>
   );
 }
-
-// import React from "react";
-// import Card from "@material-ui/core/Card";
-// import {CardMedia} from "@material-ui/core";
-// const SimpleCard: React.FC<any> = (props) => {
-// return (
-//   <Card className={classes.root}>
-//     <div style={{ position: "relative" }}>
-//       <CardMedia style={{ height: "250px", paddingTop: "2%" }}   component="img" image={"/pancakes.jpg"} title="Pancakes" alt="Pancakes"/>
-//       <div style={{position: "absolute", color: "white",top: 10,left: "50%",transform: "translateX(-50%)",}}> Some text</div>
-//   </div>
-// </Card>
-// )};
-// export default SimpleCard;
