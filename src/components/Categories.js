@@ -10,16 +10,16 @@ const images = [
     title: "Maroquinerie",
     width: "30%",
   },
-  {
-    url: "https://i0.wp.com/blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know.png?fit=2240%2C1260&ssl=1",
-    title: "Prêt à porter",
-    width: "30%",
-  },
-  {
-    url: "https://media.istockphoto.com/id/1221677097/fr/photo/maquillage-des-produits-cosm%C3%A9tiques-sur-fond-de-couleur-rose.jpg?s=612x612&w=0&k=20&c=9Ub2vBzlDu7cwxisVft5xLuV4aQclVYK00QXcKsOCeQ=",
-    title: "Maquillage",
-    width: "30%",
-  },
+  //   {
+  //     url: "https://i0.wp.com/blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know.png?fit=2240%2C1260&ssl=1",
+  //     title: "Prêt à porter",
+  //     width: "30%",
+  //   },
+  //   {
+  //     url: "https://media.istockphoto.com/id/1221677097/fr/photo/maquillage-des-produits-cosm%C3%A9tiques-sur-fond-de-couleur-rose.jpg?s=612x612&w=0&k=20&c=9Ub2vBzlDu7cwxisVft5xLuV4aQclVYK00QXcKsOCeQ=",
+  //     title: "Maquillage",
+  //     width: "30%",
+  //   },
 ];
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -92,7 +92,8 @@ export default function ButtonBases() {
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        width: "100%",
+        //width: 1000,
+        width: "100",
       }}
     >
       {images.map((image) => (

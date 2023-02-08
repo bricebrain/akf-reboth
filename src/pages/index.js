@@ -1,144 +1,154 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import Categories from "../components/Categories";
-import Image from "next/image";
-import profilePic from "../../public/logoMin.jpg";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import { Box, Button, Drawer, Paper } from "@mui/material";
+import MultiActionAreaCard from "@/components/CardItem";
+import Carousel from "react-material-ui-carousel";
+import BannerNew from "@/components/BannerNew";
+import AppBaro from "@/components/AppBaro";
+import SelectionCategories from "@/components/SelectionCategories";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const style = {
+  width: "100%",
+  maxWidth: 360,
+  bgcolor: "background.paper",
+};
 
-function Home() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
+function Item({ item }) {
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" style={{ backgroundColor: "#0B0E73" }}>
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <Image
-              src={profilePic}
-              alt="Picture of the author"
-              width={100}
-              //automatically
-              //provided
-              height={50}
-              //automatically
-              //provided
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
-            />
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-      <Categories />
-    </AppBar>
+    <BannerNew item={item} />
+    // <Paper>
+    //   <h2>{props.item.name}</h2>
+    //   <p>{props.item.description}</p>
+    // </Paper>
   );
 }
-export default Home;
+
+export default function Home() {
+  let items = [
+    {
+      name: "Random Name #1",
+      description: "Toujours plus belle",
+      url: "https://cdn.britannica.com/35/222035-131-9FC95B31/makeup-cosmetics.jpg",
+    },
+    {
+      name: "Random Name #2",
+      description: "Arrivage permanent",
+      url: "https://www.pornic.com/medias/images/prestataires/maroquinerie-reve-de-jour-19958.jpg",
+    },
+    {
+      name: "Random Name #2",
+      description: "le meilleur du prêt à porter",
+      url: "https://la-redoute-wordpress-production.s3.eu-west-3.amazonaws.com/wp-content/uploads/2018/09/04115459/actu_redoute_collection-1024x683.jpg",
+    },
+  ];
+
+  let catItems = [
+    {
+      title: "Maroquinerie",
+      url: "https://img.ltwebstatic.com/images3_pi/2022/03/22/1647943260c6f1685940f4225b994befbf3de1b1f2.webp",
+    },
+    {
+      title: "Prët à porter",
+      url: "https://i0.wp.com/blog.ebunoluwole.com/wp-content/uploads/2022/06/Opening-A-Fashion-Boutique-What-You-Need-To-Know.png?fit=2240%2C1260&ssl=1",
+    },
+    {
+      title: "Maquillage",
+      url: "https://media.istockphoto.com/id/1221677097/fr/photo/maquillage-des-produits-cosm%C3%A9tiques-sur-fond-de-couleur-rose.jpg?s=612x612&w=0&k=20&c=9Ub2vBzlDu7cwxisVft5xLuV4aQclVYK00QXcKsOCeQ=",
+    },
+  ];
+  return (
+    <>
+      <AppBaro />
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "nowrap",
+          "& > :not(style)": {
+            width: "100%",
+            height: 200,
+          },
+        }}
+      >
+        <Carousel height={200}>
+          {items.map((item, i) => (
+            <Item key={i} item={item} />
+          ))}
+        </Carousel>
+      </Box>
+
+      <div
+        style={{
+          color: "gray",
+          height: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "2px solid green",
+        }}
+      >
+        Categories
+      </div>
+
+      <div
+        style={{
+          marginTop: 10,
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            flexWrap: "nowrap",
+            "& > :not(style)": {
+              width: "30%",
+              height: 128,
+            },
+          }}
+        >
+          {catItems.map((item) => (
+            <Paper elevation={3}>
+              <SelectionCategories item={item} />
+            </Paper>
+          ))}
+        </Box>
+      </div>
+
+      <div
+        style={{
+          color: "gray",
+          height: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Les plus populaires
+      </div>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+          "& > :not(style)": {
+            width: 300,
+            height: "100%",
+          },
+        }}
+      >
+        {[1, 2, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14].map((item) => (
+          <div style={{ marginTop: 8 }}>
+            <MultiActionAreaCard key={item} />
+          </div>
+        ))}
+
+        <Drawer anchor={"left"} open={false} onClose={false}>
+          <div style={{ border: "2px solid red", height: 50, width: 50 }}></div>
+        </Drawer>
+      </Box>
+    </>
+  );
+}
