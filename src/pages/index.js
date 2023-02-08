@@ -1,14 +1,12 @@
 import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
+
 import { Box, Button, Drawer, Paper } from "@mui/material";
-import MultiActionAreaCard from "@/components/CardItem";
+import MultiActionAreaCard from "@/components/MultiActionAreaCard";
 import Carousel from "react-material-ui-carousel";
 import BannerNew from "@/components/BannerNew";
 import AppBaro from "@/components/AppBaro";
 import SelectionCategories from "@/components/SelectionCategories";
+import Articles from "@/components/Articles";
 
 const style = {
   width: "100%",
@@ -17,15 +15,15 @@ const style = {
 };
 
 function Item({ item }) {
-  return (
-    <BannerNew item={item} />
-    // <Paper>
-    //   <h2>{props.item.name}</h2>
-    //   <p>{props.item.description}</p>
-    // </Paper>
-  );
+  return <BannerNew item={item} />;
 }
 
+const articles = [
+  { id: 1, text: "rouge" },
+  { id: 2, text: "bleu" },
+  { id: 4, text: "bleu" },
+  { id: 3, text: "bleu" },
+];
 export default function Home() {
   let items = [
     {
@@ -86,35 +84,28 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          border: "2px solid green",
         }}
       >
         Categories
       </div>
 
-      <div
-        style={{
-          marginTop: 10,
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "nowrap",
+          "& > :not(style)": {
+            width: "30%",
+            height: 128,
+          },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            flexWrap: "nowrap",
-            "& > :not(style)": {
-              width: "30%",
-              height: 128,
-            },
-          }}
-        >
-          {catItems.map((item) => (
-            <Paper key={item.url} elevation={3}>
-              <SelectionCategories item={item} />
-            </Paper>
-          ))}
-        </Box>
-      </div>
+        {catItems.map((item) => (
+          <Paper key={item.url} elevation={3}>
+            <SelectionCategories item={item} />
+          </Paper>
+        ))}
+      </Box>
 
       <div
         style={{
@@ -135,20 +126,19 @@ export default function Home() {
           justifyContent: "space-evenly",
           "& > :not(style)": {
             width: 300,
-            height: "100%",
           },
         }}
       >
-        {[1, 2, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14].map((item) => (
-          <div key={item} style={{ marginTop: 8 }}>
-            <MultiActionAreaCard />
-          </div>
+        {articles.map((item) => (
+          <MultiActionAreaCard key={item.id} item={item} />
         ))}
-
-        <Drawer anchor={"left"} open={false} onClose={false}>
-          <div style={{ border: "2px solid red", height: 50, width: 50 }}></div>
-        </Drawer>
       </Box>
     </>
   );
+}
+
+{
+  /* <Drawer anchor={"left"} open={false} onClose={false}>
+          <div style={{ border: "2px solid red", height: 50, width: 50 }}></div>
+        </Drawer> */
 }

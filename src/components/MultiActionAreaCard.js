@@ -5,9 +5,17 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions, Divider } from "@mui/material";
 
-export default function MultiActionAreaCard() {
+export default function MultiActionAreaCard({ item }) {
   return (
-    <Card sx={{ width: 300, height: 280 }}>
+    <Card
+      key={item.id}
+      sx={{
+        width: 300,
+        height: 280,
+        border: "1px solid green",
+        marginBottom: 3,
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -37,17 +45,18 @@ export default function MultiActionAreaCard() {
 
                 justifyContent: "space-between",
               }}
-            >
-              <Button size="small" color="primary">
-                Details
-              </Button>
-              <Button size="small" color="primary">
-                Ajouter au panier
-              </Button>
-            </div>
+            ></div>
           </div>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Details
+        </Button>
+        <Button size="small" color="primary">
+          Ajouter au panier
+        </Button>
+      </CardActions>
     </Card>
   );
 }

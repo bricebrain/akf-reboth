@@ -106,7 +106,7 @@ export default function ButtonBases() {
         >
           <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
+          <Image alt="Pancakes">
             <Typography
               component="span"
               variant="subtitle1"

@@ -18,7 +18,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    loadData();
+    //loadData();
     return () => {};
   }, []);
 
@@ -39,12 +39,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Banner />
+        {/* <Banner />
         <Navigation />
-        <Presentation />
+        <Presentation /> */}
         {/* <Filter /> */}
         <Articles style={{ flex: 1 }} products={products} />
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );
