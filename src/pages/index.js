@@ -109,8 +109,8 @@ export default function Home() {
           }}
         >
           {catItems.map((item) => (
-            <Paper elevation={3}>
-              <SelectionCategories key={item.url} item={item} />
+            <Paper key={item.url} elevation={3}>
+              <SelectionCategories item={item} />
             </Paper>
           ))}
         </Box>
@@ -140,8 +140,8 @@ export default function Home() {
         }}
       >
         {[1, 2, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14].map((item) => (
-          <div style={{ marginTop: 8 }}>
-            <MultiActionAreaCard key={item} />
+          <div key={item} style={{ marginTop: 8 }}>
+            <MultiActionAreaCard />
           </div>
         ))}
 
