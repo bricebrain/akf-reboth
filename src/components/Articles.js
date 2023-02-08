@@ -21,7 +21,7 @@ function Articles({ products }) {
         }}
       >
         {products.map((item) => (
-          <Card key={item.id} item={item} />
+          <Card key={item} item={item} />
         ))}
       </div>
     </div>

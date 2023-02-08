@@ -110,7 +110,7 @@ export default function Home() {
         >
           {catItems.map((item) => (
             <Paper elevation={3}>
-              <SelectionCategories item={item} />
+              <SelectionCategories key={item.url} item={item} />
             </Paper>
           ))}
         </Box>
